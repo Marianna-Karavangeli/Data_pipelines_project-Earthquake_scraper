@@ -1,1 +1,1 @@
-# Data_pipelines_project-Earthquake_scraper
+# Data pipelines project-Earthquake scraper
