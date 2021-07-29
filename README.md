@@ -20,7 +20,7 @@ In order to connect to an Amazon S3 bucket, boto3 is also needed. For Selenium, 
 
 ## Repository content
 
-In this repo you can find the code for the earthquake scraper in a python file (Earthquake scraper.py). In this intuitive python script you can see the process from beginning to end: from visiting the main page all the way to the saving and export of the dataset. You can also find a block of code which is used to upload the collected data to a data lake (Amazon S3 bucket). There will also be a .csv file with the initial collection of data. 
+In this repo you can find the code for the earthquake scraper in a python file (Earthquake scraper.py). In this intuitive python script you can see the process from beginning to end: from visiting the main page all the way to the saving and export of the dataset. You can also find a block of code which is used to upload the collected data to an Amazon S3 bucket. There will also be a .csv file with the initial collection of data. 
 
 
 ## Step-by-step data collection using the Earthquake scraper
