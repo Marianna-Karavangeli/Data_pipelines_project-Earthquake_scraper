@@ -1,10 +1,15 @@
-#%%
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains
+
 import time
 import os
+import pandas as pd
+
+from botocore.exceptions import ClientError
+import logging
+import boto3
+import botocore
 
 def visit_main_page():
     """
@@ -12,7 +17,7 @@ def visit_main_page():
 
     Returns
     -------
-    Driver
+    Driver (remote control interface)
     """
     driver = webdriver.Chrome('./chromedriver.exe')
     driver.get("https://earthquake.usgs.gov/")
@@ -26,8 +31,9 @@ def visit_main_page():
     return driver
 
 time.sleep(1)
-#%%
+
 driver = visit_main_page()
+
 time.sleep(1)
 
 
@@ -37,7 +43,7 @@ def selection_settings():
     
     Returns
     -------
-    Driver
+    Driver (remote control interface)
     """
     options = driver.find_element_by_xpath("/html/body/usgs-root/usgs-header/header/usgs-panel-chooser/nav/i[3]")
     options.click()
@@ -68,7 +74,7 @@ def selection_settings():
     time.sleep(3)
 
     return driver
-#%%
+
 # Scraping the data
 driver = selection_settings()
 time.sleep(3)
@@ -77,7 +83,7 @@ time.sleep(3)
 data = {"Magnitude": [], "Place": [], "Datetime": [], "Depth": []}
 iter = 0
 
-while iter < 400:
+while iter < 400:   # The number of iterations depends on the amount of results. The number 400 was chosen to accommodate the iteration through 15500 results (approximately).
     list_eq = driver.find_element_by_xpath('//mat-list[@class="mat-list mat-list-base ng-star-inserted"]')
     earthquakes = list_eq.find_elements_by_xpath('./mat-list-item')
     for earth in earthquakes:
@@ -89,22 +95,16 @@ while iter < 400:
     ActionChains(driver).move_to_element(earthquakes[-1]).perform()
     time.sleep(1)
 
-# %%
-import pandas as pd
+
 df = pd.DataFrame.from_dict(data)
 
-if os.path.isfile('df.csv'):
-    df = df.drop_duplicates(subset=["Place", "Datetime"])
+if os.path.isfile('df.csv'):     # Looks for the df.csv file and if it finds it, the new results are appended and if the file does not exist it is created with the scraping results.
+    df = df.drop_duplicates(subset=["Place", "Datetime"])   # Removes duplicates bsaed on the pair of Place and Datetime.
     df.to_csv('df.csv', mode='a', header=False)
 else:
     df = df.drop_duplicates(subset=["Place", "Datetime"])
     df.to_csv('df.csv', mode='a', header=True)
 
-#%%
-from botocore.exceptions import ClientError
-import logging
-import boto3
-import botocore
 
 def upload_file(file_name, bucket, object_name=None):
     """
@@ -137,5 +137,5 @@ def upload_file(file_name, bucket, object_name=None):
         logging.error(e)
         return False
     return True
-#%%
+
 upload_file('df.csv', 'earthquakescraper')
