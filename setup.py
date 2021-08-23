@@ -2,7 +2,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 setup(
-    name='aerthquakescraper', ## This will be the name your package will be published with
+    name='earthquakescraper', ## This will be the name your package will be published with
     version='0.0.1', 
     description='Web scraper that scrapes erathquake data from the USGS.',
     url='https://github.com/Marianna-Karavangeli/Earthquake_scraper.git', # Add the URL of your github repo if published 
