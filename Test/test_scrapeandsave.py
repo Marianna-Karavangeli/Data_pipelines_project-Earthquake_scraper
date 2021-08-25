@@ -19,6 +19,7 @@ class SelectScrapeandSaveTestCase(unittest.TestCase):
 
         data = pd.read_csv('df.csv')
         self.assertEqual(len(data), 15424)
+
         test_message = f'Your file has been saved successfully!'
         actual_message = SelectScrapeandSave()
-        self.assertTrue(test_message, actual_message)
+        self.assertEqual(test_message, actual_message)
