@@ -3,10 +3,11 @@ import logging
 import boto3
 import botocore
 
+
 def upload_file(file_name, bucket, object_name=None):
     """
     Upload a file to an S3 bucket
-    
+
     Parameters
     ----------
     file_name : str
@@ -34,5 +35,6 @@ def upload_file(file_name, bucket, object_name=None):
         logging.error(e)
         return False
     return True
+
 
 upload_file('df.csv', 'earthquakescraper')

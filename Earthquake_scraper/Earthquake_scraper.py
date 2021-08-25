@@ -16,7 +16,7 @@ from .upload_file import upload_file
 #     """
 #     driver = webdriver.Chrome('./chromedriver.exe')
 #     driver.get("https://earthquake.usgs.gov/")
-    
+
 #     page = driver.find_element_by_xpath("/html/body/main/div/div/div[2]/div[2]/ul[1]/li/a")
 #     page.click()
 
@@ -28,6 +28,7 @@ from .upload_file import upload_file
 time.sleep(1)
 
 driver = visit_main_page()
+print(driver)
 
 time.sleep(1)
 
@@ -35,7 +36,7 @@ time.sleep(1)
 # def selection_settings():
 #     """
 #     Selects the desired options step-by-step
-    
+
 #     Returns
 #     -------
 #     Driver (remote control interface)
@@ -46,7 +47,7 @@ time.sleep(1)
 #     earthquake_catalog = driver.find_element_by_xpath("/html/body/usgs-root/div/usgs-settings/section/usgs-earthquakes-filter/a")
 #     earthquake_catalog.click()
 
-#     custom_selection = driver.find_element_by_xpath("/html/body/main/div/form/section/div[2]/section/ul[1]/li[3]/label") 
+#     custom_selection = driver.find_element_by_xpath("/html/body/main/div/form/section/div[2]/section/ul[1]/li[3]/label")
 #     custom_selection.click()
 
 #     start_datetime = driver.find_element_by_xpath("/html/body/main/div/form/section/div[2]/section/ul[2]/li[1]/input")
@@ -72,6 +73,7 @@ time.sleep(1)
 
 # Scraping the data
 driver = selection_settings()
+
 time.sleep(3)
 
 # def scrapeandsave():
@@ -81,7 +83,7 @@ time.sleep(3)
 #     Datetime and Depth).
 #     It created a pandas dataframe from the populated dictionary and saves it in a .csv file
 #     after checking if that file already exists.
-    
+
 #     Returns
 #     -------
 #     Message
@@ -113,12 +115,12 @@ time.sleep(3)
 #         df.to_csv('df.csv', mode='a', header=True)
 #         return f'Your file has been saved successfully!'
 
-
+scrapeandsave()
 
 # def upload_file(file_name, bucket, object_name=None):
 #     """
 #     Upload a file to an S3 bucket
-    
+
 #     Parameters
 #     ----------
 #     file_name : str
