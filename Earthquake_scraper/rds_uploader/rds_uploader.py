@@ -4,9 +4,9 @@ from sqlalchemy import create_engine
 DATABASE_TYPE = 'postgresql'
 DBAPI = 'psycopg2'
 # Change it for your AWS endpoint
-ENDPOINT = 'earthquakedatabase.c1izci8c3w18.us-east-2.rds.amazonaws.com'
+ENDPOINT = '' # The endpoint of your AWS RDS
 USER = 'postgres'
-PASSWORD = 'Youshallnotpass'
+PASSWORD = '' # Your password
 PORT = 5432
 DATABASE = 'postgres'
 engine = create_engine(
