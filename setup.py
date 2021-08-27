@@ -10,6 +10,6 @@ setup(
     author='Marianna-Karavangeli', # Your name
     license='MIT',
     packages=find_packages(), # This one is important to explain. See the notebook for a detailed explanation
-    install_requires=['selenium', 'pandas', 'botocore', 'boto3', 'logging'], # For this project we are using two external libraries
+    install_requires=['selenium', 'pandas', 'botocore', 'boto3', 'logging', 'sqlalchemy'], # For this project we are using two external libraries
                                                      # Make sure to include all external libraries in this argument
 )
