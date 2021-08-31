@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from .visit_main_page import visit_main_page
+from visit_main_page import visit_main_page
 
 import time
 

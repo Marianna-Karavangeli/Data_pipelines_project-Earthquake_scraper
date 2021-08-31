@@ -1,3 +1,4 @@
+from Earthquake_scraper.scraper.selection_settings import selection_settings
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -19,6 +20,7 @@ def scrapeandsave():
     -------
     Message
     """
+    driver = selection_settings()
     data = {"Magnitude": [], "Place": [], "Datetime": [], "Depth": []}
     iter = 0
 
