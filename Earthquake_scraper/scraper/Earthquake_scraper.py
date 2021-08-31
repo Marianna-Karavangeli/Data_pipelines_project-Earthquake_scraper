@@ -1,9 +1,9 @@
 import time
 
-from visit_main_page import visit_main_page
-from selection_settings import selection_settings
-from scrapeandsave import scrapeandsave
-from upload_file import upload_file
+from .visit_main_page import visit_main_page
+from .selection_settings import selection_settings
+from .scrapeandsave import scrapeandsave
+from .upload_file import upload_file
 
 
 time.sleep(1)
